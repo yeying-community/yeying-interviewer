@@ -1,55 +1,5 @@
 # 夜莺面试官 (Yeying Interviewer)
 
-## 项目简介
-
-夜莺面试官是一个基于 DDD（领域驱动设计）架构的智能面试系统，支持面试管理、RAG 问答、数字人交互等功能，采用 gRPC 微服务架构。
-
-## 目录结构
-
-```
-yeying-interviewer/
-├── interview/              # 业务主代码（DDD架构）
-│   ├── application/        # 应用服务层
-│   │   ├── resume/         # 简历管理服务
-│   │   ├── room/           # 面试间管理服务
-│   │   └── session/        # 面试会话服务
-│   ├── domain/             # 领域模型层
-│   │   ├── models.py       # 数据模型定义
-│   │   ├── resume/         # 简历领域仓储
-│   │   ├── room/           # 面试间领域仓储
-│   │   └── session/        # 会话领域仓储
-│   ├── infrastructure/     # 基础设施层
-│   │   ├── database/       # 数据库连接和迁移
-│   │   ├── auth.py         # 认证服务
-│   │   ├── logger.py       # 日志服务
-│   │   └── exceptions.py   # 异常处理
-│   ├── interfaces/         # 接口层（gRPC服务等）
-│   │   ├── interview_server.py  # 面试服务
-│   │   ├── rag_server.py        # RAG服务
-│   │   ├── digital_server.py    # 数字人服务
-│   │   └── interceptors.py      # gRPC拦截器
-│   ├── config/             # 配置管理
-│   │   └── config.py       # 配置加载与管理
-│   └── runner.py           # 启动主程序
-├── config.toml             # 主配置文件
-├── scripts/                # 项目脚本
-│   ├── runner.sh           # Linux/macOS 启动脚本
-│   ├── stop.sh             # 停止脚本
-│   ├── generate_proto.sh   # 生成 gRPC proto 文件
-│   └── functions.sh        # 通用函数库
-├── test/                   # 测试代码
-│   ├── test_config.py      # 配置测试
-│   ├── test_database.py    # 数据库测试
-│   └── test_models.py      # 模型测试
-├── run/                    # 运行时目录（脚本自动创建）
-│   ├── log/                # 日志文件
-│   ├── config/             # 运行时配置
-│   └── pid.txt             # 进程ID文件
-├── data/                   # 数据目录
-│   └── interviewer.db      # SQLite数据库
-└── requirements.txt        # Python依赖包
-```
-
 ## 快速开始
 
 ### 1. 依赖安装
