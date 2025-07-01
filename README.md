@@ -90,16 +90,6 @@ netstat -ln | grep 8741
 tail -f run/log/start.log
 ```
 
-## 端口配置
-
-### 开发环境 (dev)
-- gRPC 端口：9401
-- HTTP 端口：8741
-
-### 生产环境 (prod)
-- gRPC 端口：9402
-- HTTP 端口：8742
-
 ## 测试
 
 ### 运行全部测试
