@@ -174,13 +174,13 @@ def ensure_migrated(config: DatabaseConfig, tables: List[BaseModel]):
         # 创建所有表
         database.create_tables(tables)
         # 创建初始的架构迁移记录
-        from interview.domain.models import SchemaMigrationDO
+        from interviewr.domain.models import SchemaMigrationDO
         SchemaMigrationDO.create(version=CURRENT_VERSION)
         logging.info("Database tables created")
 
     # 检查是否需要迁移
     try:
-        from interview.domain.models import SchemaMigrationDO
+        from interviewr.domain.models import SchemaMigrationDO
         # 获取当前的架构版本记录
         schema = SchemaMigrationDO.select().first()
         if schema and schema.version != CURRENT_VERSION:

@@ -176,7 +176,7 @@ if [ "${force_kill}" = true ]; then
   echo -e "${COLOR_YELLOW}Force killing all interviewer processes...${COLOR_NC}"
   
   # 查找所有相关的Python进程
-  interviewer_pids=$(pgrep -f "interview.*runner\.py" 2>/dev/null || true)
+  interviewer_pids=$(pgrep -f "interviewr.*runner\.py" 2>/dev/null || true)
   
   if [ -n "${interviewer_pids}" ]; then
     echo "Found interviewer processes: ${interviewer_pids}"
@@ -189,7 +189,7 @@ if [ "${force_kill}" = true ]; then
     
     # 等待一下然后验证
     sleep 2
-    remaining_pids=$(pgrep -f "interview.*runner\.py" 2>/dev/null || true)
+    remaining_pids=$(pgrep -f "interviewr.*runner\.py" 2>/dev/null || true)
     
     if [ -z "${remaining_pids}" ]; then
       echo -e "${COLOR_GREEN}All interviewer processes killed successfully.${COLOR_NC}"

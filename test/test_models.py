@@ -1,10 +1,10 @@
 import pytest
 import uuid
 from datetime import datetime
-from interview.domain.models import (
+from interviewr.domain.models import (
     SchemaMigrationDO, JobInfoDO, InterviewRoomDO, ALL_MODELS
 )
-from interview.infrastructure.database.instance import (
+from interviewr.infrastructure.database.instance import (
     DatabaseConfig, create_database, database_proxy
 )
 

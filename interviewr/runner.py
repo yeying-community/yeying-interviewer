@@ -11,9 +11,9 @@ import grpc
 # import yeying.api.rag.rag_pb2_grpc as rag_pb2_grpc
 
 # 导入应用核心模块
-from interview.config.config import Config  # 配置管理器
-from interview.infrastructure.database.instance import ensure_migrated  # 数据库迁移
-from interview.domain.models import ALL_MODELS  # 所有数据模型
+from interviewr.config.config import Config  # 配置管理器
+from interviewr.infrastructure.database.instance import ensure_migrated  # 数据库迁移
+from interviewr.domain.models import ALL_MODELS  # 所有数据模型
 
 
 # TODO: 当服务实现完成时导入

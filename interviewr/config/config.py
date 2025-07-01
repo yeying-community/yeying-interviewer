@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from typing import Optional
 
 # 导入数据库配置类
-from interview.infrastructure.database.instance import DatabaseConfig
+from interviewr.infrastructure.database.instance import DatabaseConfig
 
 
 # =================配置模型类=================

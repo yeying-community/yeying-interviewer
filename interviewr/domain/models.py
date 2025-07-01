@@ -2,7 +2,7 @@
 from datetime import datetime
 from peewee import CharField, TextField, DateTimeField, ForeignKeyField, UUIDField
 import uuid
-from interview.infrastructure.database.instance import BaseModel
+from interviewr.infrastructure.database.instance import BaseModel
 
 
 # =================数据库架构迁移模型=================

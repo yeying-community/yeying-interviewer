@@ -179,7 +179,7 @@ echo -e "step $index -- start interviewer service"
 
 if [ "${env}" == "dev" ]; then
   # 开发环境：直接运行Python脚本
-  bin_file="${work_dir}/interview/runner.py"
+  bin_file="${work_dir}/interviewr/runner.py"
   command="python3 ${bin_file}"
 
   # 使用nohup在后台运行服务，并重定向输出到日志文件

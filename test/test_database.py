@@ -2,7 +2,7 @@ import os
 import tempfile
 import pytest
 from peewee import SqliteDatabase
-from interview.infrastructure.database.instance import (
+from interviewr.infrastructure.database.instance import (
     DatabaseConfig, DatabaseInstance, create_database,
     ensure_parent_dirs_exist, database_proxy
 )

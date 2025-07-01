@@ -2,7 +2,7 @@ import os
 import tempfile
 import pytest
 import toml
-from interview.config.config import Config, LogConfig, ServerConfig, CredentialConfig
+from interviewr.config.config import Config, LogConfig, ServerConfig, CredentialConfig
 
 
 class TestConfig:
