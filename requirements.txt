@@ -1,0 +1,14 @@
+# 核心依赖
+toml>=0.10.0
+peewee>=3.14.0
+pydantic>=1.10.0
+
+# gRPC依赖
+grpcio>=1.50.0
+grpcio-tools>=1.50.0
+protobuf>=4.0.0
+
+# 开发依赖
+pytest>=7.0.0
+black>=22.0.0
+flake8>=5.0.0
