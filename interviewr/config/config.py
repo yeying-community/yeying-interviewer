@@ -3,7 +3,6 @@ import logging.handlers
 import os
 import toml
 from pydantic import BaseModel
-from typing import Optional
 
 # 导入数据库配置类
 from interviewr.infrastructure.database.instance import DatabaseConfig
