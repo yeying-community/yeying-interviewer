@@ -1,33 +1,61 @@
-#!/bin/bash
+#!/bin/sh
+# before running the script on macos, you should install protobuf with command `brew install protobuf`
+base_name="${0##*/}"
+current_directory=$(
+  cd "$(dirname "$0")" || exit 1
+  pwd
+)
 
-# 设置路径
-PROTO_DIR="app/apis/proto"
-OUTPUT_DIR="app/apis/generated"
-PROJECT_ROOT=$(dirname $(dirname $(realpath $0)))
+usage() {
+  printf "Usage: %s\n \
+    -d <You can specify the directory of yeying-idl, default third_party/yeying-idl\n \
+    " "${base_name}"
+}
 
-cd "$PROJECT_ROOT"
+cd "${current_directory}"/.. || exit 1
+runtime_directory=$(pwd)
 
-echo "🔧 开始生成gRPC代码..."
+idl_dir=${runtime_directory}/third_party/yeying-idl
 
-# 创建输出目录
-mkdir -p "$OUTPUT_DIR"
+# For macos`s getopt, reference: https://formulae.brew.sh/formula/gnu-getopt
+while getopts ":d:" o; do
+  case "${o}" in
+  d)
+    idl_dir=${OPTARG}
+    ;;
+  *)
+    usage
+    ;;
+  esac
+done
+shift $((OPTIND - 1))
 
-# 生成Python gRPC代码
-python -m grpc_tools.protoc \
-    --proto_path="$PROTO_DIR" \
-    --python_out="$OUTPUT_DIR" \
-    --grpc_python_out="$OUTPUT_DIR" \
-    "$PROTO_DIR/rag.proto"
+language=python
+app_type=server
 
-echo "✅ gRPC代码生成完成！"
-echo "生成文件："
-echo "  - $OUTPUT_DIR/rag_pb2.py"
-echo "  - $OUTPUT_DIR/rag_pb2_grpc.py"
+output_dir=${idl_dir}/target/${app_type}/${language}/yeying
+tool=${idl_dir}/script/compiler.sh
+echo "${tool}"
 
-# 修复导入路径
-sed -i 's/import rag_pb2/from . import rag_pb2/' "$OUTPUT_DIR/rag_pb2_grpc.py"
+# initialize the dependency library
+# git submodule update --init
+# git submodule foreach git pull origin main
+# git submodule foreach git submodule update --init --depth=1
 
-# 创建__init__.py文件
-echo "# Generated gRPC code" > "$OUTPUT_DIR/__init__.py"
+if [ -d "venv" ]; then
+  source "venv/bin/activate"
+fi
 
-echo "🎉 完成！"
+# generate code
+if ! sh "${tool}" -t server -m common,rag -l "${language}"; then
+  echo "Fail to compile proto file for interviewer!"
+  exit 1
+fi
+
+target_dir=${runtime_directory}/yeying
+if [ -d "${target_dir}/api" ]; then
+  rm -rvf "${target_dir}"/api/*
+fi
+
+mkdir -p "${target_dir}"
+cp -rvf "${output_dir}"/* "${target_dir}"/
