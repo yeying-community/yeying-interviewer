@@ -33,46 +33,46 @@ level = "INFO"
 
 ```bash
 # 开发环境启动（默认端口：gRPC=9401, HTTP=8741）
-./scripts/runner.sh -e dev
+./script/runner.sh -e dev
 
 # 生产环境启动（默认端口：gRPC=9402, HTTP=8742）
-./scripts/runner.sh -e prod
+./script/runner.sh -e prod
 
 # 自定义端口启动
-./scripts/runner.sh -e dev -g 9500 -h 8500
+./script/runner.sh -e dev -g 9500 -h 8500
 
 # 启用调试模式
-./scripts/runner.sh -d -e dev
+./script/runner.sh -d -e dev
 ```
 
 #### 方式二：直接运行 Python
 
 ```bash
 # 基础启动
-PYTHONPATH=. python interview/runner.py --config config.toml --env dev
+PYTHONPATH=. python interview/runner.py --configs configs.toml --env dev
 
 # 指定端口启动
 PYTHONPATH=. python interview/runner.py \
-  --config config.toml \
+  --configs configs.toml \
   --grpc-port 9401 \
   --http-port 8741 \
   --env dev
 
 # 启用调试模式
-PYTHONPATH=. python interview/runner.py --debug --config config.toml --env dev
+PYTHONPATH=. python interview/runner.py --debug --configs configs.toml --env dev
 ```
 
 ### 4. 停止服务
 
 ```bash
 # 正常停止服务
-./scripts/stop.sh
+./script/stop.sh
 
 # 强制停止所有相关进程
-./scripts/stop.sh -f
+./script/stop.sh -f
 
 # 停止指定进程
-./scripts/stop.sh -p <PID>
+./script/stop.sh -p <PID>
 ```
 
 ### 5. 服务验证
