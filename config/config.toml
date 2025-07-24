@@ -9,8 +9,7 @@ backupCount=15
 enable=false
 
 [server]
-grpc_port=9401
-http_port=8741
+port=9401
 
 [database]
 type = "sqlite"
