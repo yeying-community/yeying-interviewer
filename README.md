@@ -96,13 +96,13 @@ tail -f run/log/start.log
 
 ```bash
 # 运行所有测试
-python -m pytest test/ -v
+python -m pytest tests/ -v
 
 # 运行特定测试文件
-python -m pytest test/test_config.py -v
+python -m pytest tests/test_config.py -v
 
 # 运行测试并显示覆盖率
-python -m pytest test/ -v --cov=interview
+python -m pytest tests/ -v --cov=interview
 ```
 
 ### 测试说明

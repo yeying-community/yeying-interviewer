@@ -197,6 +197,7 @@ if [ -f "${password_file}" ]; then
   rm -rf "${password_file}"
 fi
 
+index=$((index+1))
 printf "\n"
 echo -e "step $index -- start envoy proxy"
 # 启动代理，为了确保一台机器上运行多个envoy实例，需要使用不同base-id参数
