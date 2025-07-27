@@ -4,7 +4,7 @@ from interviewer.domain.manager.user import saveUser, queryUser, deleteUser, que
 from interviewer.domain.mapper.entities import UserDO, UserStateDO
 from interviewer.domain.model.user import User, UserState
 from interviewer.tool.date import getCurrentUtcString
-from tests.common.test_config import setup_test_database, setup_test_logging
+from tests.yeying.common.test_config import setup_test_database, setup_test_logging
 
 
 def newUser(did: str):
