@@ -2,12 +2,13 @@ from yeying.api.common import code_pb2 as _code_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Iterable as _Iterable, Optional as _Optional, Union as _Union
+from collections.abc import Iterable as _Iterable
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ApplicationMetadata(_message.Message):
-    __slots__ = ["owner", "network", "address", "did", "version", "hash", "name", "code", "description", "location", "serviceCodes", "avatar", "createdAt", "updatedAt", "signature", "codePackagePath"]
+    __slots__ = ("owner", "network", "address", "did", "version", "hash", "name", "code", "description", "location", "serviceCodes", "avatar", "createdAt", "updatedAt", "signature", "codePackagePath")
     OWNER_FIELD_NUMBER: _ClassVar[int]
     NETWORK_FIELD_NUMBER: _ClassVar[int]
     ADDRESS_FIELD_NUMBER: _ClassVar[int]
@@ -43,7 +44,7 @@ class ApplicationMetadata(_message.Message):
     def __init__(self, owner: _Optional[str] = ..., network: _Optional[str] = ..., address: _Optional[str] = ..., did: _Optional[str] = ..., version: _Optional[int] = ..., hash: _Optional[str] = ..., name: _Optional[str] = ..., code: _Optional[_Union[_code_pb2.ApplicationCodeEnum, str]] = ..., description: _Optional[str] = ..., location: _Optional[str] = ..., serviceCodes: _Optional[_Iterable[_Union[_code_pb2.ServiceCodeEnum, str]]] = ..., avatar: _Optional[str] = ..., createdAt: _Optional[str] = ..., updatedAt: _Optional[str] = ..., signature: _Optional[str] = ..., codePackagePath: _Optional[str] = ...) -> None: ...
 
 class ServiceMetadata(_message.Message):
-    __slots__ = ["owner", "network", "address", "did", "version", "name", "description", "code", "apiCodes", "proxy", "grpc", "avatar", "createdAt", "updatedAt", "signature", "codePackagePath"]
+    __slots__ = ("owner", "network", "address", "did", "version", "name", "description", "code", "apiCodes", "proxy", "grpc", "avatar", "createdAt", "updatedAt", "signature", "codePackagePath")
     OWNER_FIELD_NUMBER: _ClassVar[int]
     NETWORK_FIELD_NUMBER: _ClassVar[int]
     ADDRESS_FIELD_NUMBER: _ClassVar[int]
