@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from yeying.api.asset import namespace_pb2 as yeying_dot_api_dot_asset_dot_namespace__pb2
+from yeying.api.interviewer import room_pb2 as yeying_dot_api_dot_interviewer_dot_room__pb2
 
 GRPC_GENERATED_VERSION = '1.73.1'
 GRPC_VERSION = grpc.__version__
@@ -18,15 +18,16 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in yeying/api/asset/namespace_pb2_grpc.py depends on'
+        + f' but the generated code in yeying/api/interviewer/room_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
     )
 
 
-class NamespaceStub(object):
-    """命名空间，用于隔离和资产治理的目的，确保用一个用户在使用不同的应用时产生的资产信息互补干扰。同时也方便用户管理资产。
+class RoomStub(object):
+    """*
+    面试间管理模块
     """
 
     def __init__(self, channel):
@@ -35,138 +36,113 @@ class NamespaceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Search = channel.unary_unary(
-                '/yeying.api.asset.Namespace/Search',
-                request_serializer=yeying_dot_api_dot_asset_dot_namespace__pb2.SearchNamespaceRequest.SerializeToString,
-                response_deserializer=yeying_dot_api_dot_asset_dot_namespace__pb2.SearchNamespaceResponse.FromString,
-                _registered_method=True)
         self.Create = channel.unary_unary(
-                '/yeying.api.asset.Namespace/Create',
-                request_serializer=yeying_dot_api_dot_asset_dot_namespace__pb2.CreateNamespaceRequest.SerializeToString,
-                response_deserializer=yeying_dot_api_dot_asset_dot_namespace__pb2.CreateNamespaceResponse.FromString,
+                '/yeying.api.apps.interviewer.Room/Create',
+                request_serializer=yeying_dot_api_dot_interviewer_dot_room__pb2.CreateRoomRequest.SerializeToString,
+                response_deserializer=yeying_dot_api_dot_interviewer_dot_room__pb2.CreateRoomResponse.FromString,
                 _registered_method=True)
-        self.Detail = channel.unary_unary(
-                '/yeying.api.asset.Namespace/Detail',
-                request_serializer=yeying_dot_api_dot_asset_dot_namespace__pb2.NamespaceDetailRequest.SerializeToString,
-                response_deserializer=yeying_dot_api_dot_asset_dot_namespace__pb2.NamespaceDetailResponse.FromString,
+        self.Get = channel.unary_unary(
+                '/yeying.api.apps.interviewer.Room/Get',
+                request_serializer=yeying_dot_api_dot_interviewer_dot_room__pb2.GetRoomRequest.SerializeToString,
+                response_deserializer=yeying_dot_api_dot_interviewer_dot_room__pb2.GetRoomResponse.FromString,
                 _registered_method=True)
         self.Update = channel.unary_unary(
-                '/yeying.api.asset.Namespace/Update',
-                request_serializer=yeying_dot_api_dot_asset_dot_namespace__pb2.UpdateNamespaceRequest.SerializeToString,
-                response_deserializer=yeying_dot_api_dot_asset_dot_namespace__pb2.UpdateNamespaceResponse.FromString,
+                '/yeying.api.apps.interviewer.Room/Update',
+                request_serializer=yeying_dot_api_dot_interviewer_dot_room__pb2.UpdateRoomRequest.SerializeToString,
+                response_deserializer=yeying_dot_api_dot_interviewer_dot_room__pb2.UpdateRoomResponse.FromString,
                 _registered_method=True)
         self.Delete = channel.unary_unary(
-                '/yeying.api.asset.Namespace/Delete',
-                request_serializer=yeying_dot_api_dot_asset_dot_namespace__pb2.DeleteNamespaceRequest.SerializeToString,
-                response_deserializer=yeying_dot_api_dot_asset_dot_namespace__pb2.DeleteNamespaceResponse.FromString,
+                '/yeying.api.apps.interviewer.Room/Delete',
+                request_serializer=yeying_dot_api_dot_interviewer_dot_room__pb2.DeleteRoomRequest.SerializeToString,
+                response_deserializer=yeying_dot_api_dot_interviewer_dot_room__pb2.DeleteRoomResponse.FromString,
+                _registered_method=True)
+        self.List = channel.unary_unary(
+                '/yeying.api.apps.interviewer.Room/List',
+                request_serializer=yeying_dot_api_dot_interviewer_dot_room__pb2.ListRoomsRequest.SerializeToString,
+                response_deserializer=yeying_dot_api_dot_interviewer_dot_room__pb2.ListRoomsResponse.FromString,
                 _registered_method=True)
 
 
-class NamespaceServicer(object):
-    """命名空间，用于隔离和资产治理的目的，确保用一个用户在使用不同的应用时产生的资产信息互补干扰。同时也方便用户管理资产。
+class RoomServicer(object):
+    """*
+    面试间管理模块
     """
 
-    def Search(self, request, context):
-        """搜索命名空间
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
     def Create(self, request, context):
-        """创建命名空间
+        """创建面试间 
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Detail(self, request, context):
-        """命名空间详情
+    def Get(self, request, context):
+        """获取面试间信息 
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def Update(self, request, context):
-        """更新命名空间
+        """更新面试间 
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def Delete(self, request, context):
-        """删除命名空间
+        """删除面试间 
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def List(self, request, context):
+        """列出面试间 
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_NamespaceServicer_to_server(servicer, server):
+def add_RoomServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Search': grpc.unary_unary_rpc_method_handler(
-                    servicer.Search,
-                    request_deserializer=yeying_dot_api_dot_asset_dot_namespace__pb2.SearchNamespaceRequest.FromString,
-                    response_serializer=yeying_dot_api_dot_asset_dot_namespace__pb2.SearchNamespaceResponse.SerializeToString,
-            ),
             'Create': grpc.unary_unary_rpc_method_handler(
                     servicer.Create,
-                    request_deserializer=yeying_dot_api_dot_asset_dot_namespace__pb2.CreateNamespaceRequest.FromString,
-                    response_serializer=yeying_dot_api_dot_asset_dot_namespace__pb2.CreateNamespaceResponse.SerializeToString,
+                    request_deserializer=yeying_dot_api_dot_interviewer_dot_room__pb2.CreateRoomRequest.FromString,
+                    response_serializer=yeying_dot_api_dot_interviewer_dot_room__pb2.CreateRoomResponse.SerializeToString,
             ),
-            'Detail': grpc.unary_unary_rpc_method_handler(
-                    servicer.Detail,
-                    request_deserializer=yeying_dot_api_dot_asset_dot_namespace__pb2.NamespaceDetailRequest.FromString,
-                    response_serializer=yeying_dot_api_dot_asset_dot_namespace__pb2.NamespaceDetailResponse.SerializeToString,
+            'Get': grpc.unary_unary_rpc_method_handler(
+                    servicer.Get,
+                    request_deserializer=yeying_dot_api_dot_interviewer_dot_room__pb2.GetRoomRequest.FromString,
+                    response_serializer=yeying_dot_api_dot_interviewer_dot_room__pb2.GetRoomResponse.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
                     servicer.Update,
-                    request_deserializer=yeying_dot_api_dot_asset_dot_namespace__pb2.UpdateNamespaceRequest.FromString,
-                    response_serializer=yeying_dot_api_dot_asset_dot_namespace__pb2.UpdateNamespaceResponse.SerializeToString,
+                    request_deserializer=yeying_dot_api_dot_interviewer_dot_room__pb2.UpdateRoomRequest.FromString,
+                    response_serializer=yeying_dot_api_dot_interviewer_dot_room__pb2.UpdateRoomResponse.SerializeToString,
             ),
             'Delete': grpc.unary_unary_rpc_method_handler(
                     servicer.Delete,
-                    request_deserializer=yeying_dot_api_dot_asset_dot_namespace__pb2.DeleteNamespaceRequest.FromString,
-                    response_serializer=yeying_dot_api_dot_asset_dot_namespace__pb2.DeleteNamespaceResponse.SerializeToString,
+                    request_deserializer=yeying_dot_api_dot_interviewer_dot_room__pb2.DeleteRoomRequest.FromString,
+                    response_serializer=yeying_dot_api_dot_interviewer_dot_room__pb2.DeleteRoomResponse.SerializeToString,
+            ),
+            'List': grpc.unary_unary_rpc_method_handler(
+                    servicer.List,
+                    request_deserializer=yeying_dot_api_dot_interviewer_dot_room__pb2.ListRoomsRequest.FromString,
+                    response_serializer=yeying_dot_api_dot_interviewer_dot_room__pb2.ListRoomsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'yeying.api.asset.Namespace', rpc_method_handlers)
+            'yeying.api.apps.interviewer.Room', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('yeying.api.asset.Namespace', rpc_method_handlers)
+    server.add_registered_method_handlers('yeying.api.apps.interviewer.Room', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class Namespace(object):
-    """命名空间，用于隔离和资产治理的目的，确保用一个用户在使用不同的应用时产生的资产信息互补干扰。同时也方便用户管理资产。
+class Room(object):
+    """*
+    面试间管理模块
     """
-
-    @staticmethod
-    def Search(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/yeying.api.asset.Namespace/Search',
-            yeying_dot_api_dot_asset_dot_namespace__pb2.SearchNamespaceRequest.SerializeToString,
-            yeying_dot_api_dot_asset_dot_namespace__pb2.SearchNamespaceResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
 
     @staticmethod
     def Create(request,
@@ -182,9 +158,9 @@ class Namespace(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/yeying.api.asset.Namespace/Create',
-            yeying_dot_api_dot_asset_dot_namespace__pb2.CreateNamespaceRequest.SerializeToString,
-            yeying_dot_api_dot_asset_dot_namespace__pb2.CreateNamespaceResponse.FromString,
+            '/yeying.api.apps.interviewer.Room/Create',
+            yeying_dot_api_dot_interviewer_dot_room__pb2.CreateRoomRequest.SerializeToString,
+            yeying_dot_api_dot_interviewer_dot_room__pb2.CreateRoomResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -196,7 +172,7 @@ class Namespace(object):
             _registered_method=True)
 
     @staticmethod
-    def Detail(request,
+    def Get(request,
             target,
             options=(),
             channel_credentials=None,
@@ -209,9 +185,9 @@ class Namespace(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/yeying.api.asset.Namespace/Detail',
-            yeying_dot_api_dot_asset_dot_namespace__pb2.NamespaceDetailRequest.SerializeToString,
-            yeying_dot_api_dot_asset_dot_namespace__pb2.NamespaceDetailResponse.FromString,
+            '/yeying.api.apps.interviewer.Room/Get',
+            yeying_dot_api_dot_interviewer_dot_room__pb2.GetRoomRequest.SerializeToString,
+            yeying_dot_api_dot_interviewer_dot_room__pb2.GetRoomResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -236,9 +212,9 @@ class Namespace(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/yeying.api.asset.Namespace/Update',
-            yeying_dot_api_dot_asset_dot_namespace__pb2.UpdateNamespaceRequest.SerializeToString,
-            yeying_dot_api_dot_asset_dot_namespace__pb2.UpdateNamespaceResponse.FromString,
+            '/yeying.api.apps.interviewer.Room/Update',
+            yeying_dot_api_dot_interviewer_dot_room__pb2.UpdateRoomRequest.SerializeToString,
+            yeying_dot_api_dot_interviewer_dot_room__pb2.UpdateRoomResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -263,9 +239,36 @@ class Namespace(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/yeying.api.asset.Namespace/Delete',
-            yeying_dot_api_dot_asset_dot_namespace__pb2.DeleteNamespaceRequest.SerializeToString,
-            yeying_dot_api_dot_asset_dot_namespace__pb2.DeleteNamespaceResponse.FromString,
+            '/yeying.api.apps.interviewer.Room/Delete',
+            yeying_dot_api_dot_interviewer_dot_room__pb2.DeleteRoomRequest.SerializeToString,
+            yeying_dot_api_dot_interviewer_dot_room__pb2.DeleteRoomResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def List(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/yeying.api.apps.interviewer.Room/List',
+            yeying_dot_api_dot_interviewer_dot_room__pb2.ListRoomsRequest.SerializeToString,
+            yeying_dot_api_dot_interviewer_dot_room__pb2.ListRoomsResponse.FromString,
             options,
             channel_credentials,
             insecure,

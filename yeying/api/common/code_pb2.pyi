@@ -5,7 +5,7 @@ from typing import ClassVar as _ClassVar
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ResponseCodeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     RESPONSE_CODE_UNKNOWN: _ClassVar[ResponseCodeEnum]
     OK: _ClassVar[ResponseCodeEnum]
     INVALID_ARGUMENT: _ClassVar[ResponseCodeEnum]
@@ -22,7 +22,7 @@ class ResponseCodeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     DATA_CORRUPTED: _ClassVar[ResponseCodeEnum]
 
 class ContractStatusEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     CONTRACT_STATUS_UNKNOWN: _ClassVar[ContractStatusEnum]
     CONTRACT_STATUS_INACTIVATED: _ClassVar[ContractStatusEnum]
     CONTRACT_STATUS_ACTIVATED: _ClassVar[ContractStatusEnum]
@@ -30,13 +30,13 @@ class ContractStatusEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     CONTRACT_STATUS_CANCELED: _ClassVar[ContractStatusEnum]
 
 class LanguageCodeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     LANGUAGE_CODE_UNKNOWN: _ClassVar[LanguageCodeEnum]
     LANGUAGE_CODE_ZH_CH: _ClassVar[LanguageCodeEnum]
     LANGUAGE_CODE_EN_US: _ClassVar[LanguageCodeEnum]
 
 class ApplicationCodeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     APPLICATION_CODE_UNKNOWN: _ClassVar[ApplicationCodeEnum]
     APPLICATION_CODE_MARKET: _ClassVar[ApplicationCodeEnum]
     APPLICATION_CODE_ASSET: _ClassVar[ApplicationCodeEnum]
@@ -46,7 +46,7 @@ class ApplicationCodeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     APPLICATION_CODE_WORKBENCH: _ClassVar[ApplicationCodeEnum]
 
 class ServiceCodeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     SERVICE_CODE_UNKNOWN: _ClassVar[ServiceCodeEnum]
     SERVICE_CODE_NODE: _ClassVar[ServiceCodeEnum]
     SERVICE_CODE_WAREHOUSE: _ClassVar[ServiceCodeEnum]
@@ -55,7 +55,7 @@ class ServiceCodeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     SERVICE_CODE_RAG: _ClassVar[ServiceCodeEnum]
 
 class ApiCodeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     API_CODE_UNKNOWN: _ClassVar[ApiCodeEnum]
     API_CODE_USER: _ClassVar[ApiCodeEnum]
     API_CODE_IDENTITY: _ClassVar[ApiCodeEnum]
@@ -75,12 +75,12 @@ class ApiCodeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     API_CODE_RAG: _ClassVar[ApiCodeEnum]
 
 class ImageFormatEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     IMAGE_FORMAT_UNKNOWN: _ClassVar[ImageFormatEnum]
     IMAGE_FORMAT_PNG: _ClassVar[ImageFormatEnum]
 
 class DigitalFormatEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     DIGITAL_FORMAT_UNKNOWN: _ClassVar[DigitalFormatEnum]
     DIGITAL_FORMAT_TEXT: _ClassVar[DigitalFormatEnum]
     DIGITAL_FORMAT_IMAGE: _ClassVar[DigitalFormatEnum]
@@ -90,32 +90,32 @@ class DigitalFormatEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     DIGITAL_FORMAT_OTHER: _ClassVar[DigitalFormatEnum]
 
 class ContentFormatEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     CONTENT_FORMAT_UNKNOWN: _ClassVar[ContentFormatEnum]
     CONTENT_FORMAT_URL: _ClassVar[ContentFormatEnum]
     CONTENT_FORMAT_BASE64: _ClassVar[ContentFormatEnum]
 
 class SessionSceneEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     SESSION_SCENE_UNKNOWN: _ClassVar[SessionSceneEnum]
     SESSION_SCENE_DIALOGUE: _ClassVar[SessionSceneEnum]
     SESSION_SCENE_DRAWING: _ClassVar[SessionSceneEnum]
     SESSION_SCENE_TRANSLATION: _ClassVar[SessionSceneEnum]
 
 class SessionRoleEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     SESSION_ROLE_UNKNOWN: _ClassVar[SessionRoleEnum]
     SESSION_ROLE_PARTICIPANT: _ClassVar[SessionRoleEnum]
     SESSION_ROLE_ADMIN: _ClassVar[SessionRoleEnum]
 
 class ParticipantTypeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     PARTICIPANT_TYPE_UNKNOWN: _ClassVar[ParticipantTypeEnum]
     PARTICIPANT_TYPE_SERVICE: _ClassVar[ParticipantTypeEnum]
     PARTICIPANT_TYPE_PEOPLE: _ClassVar[ParticipantTypeEnum]
 
 class ApplicationStatusEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     APPLICATION_STATUS_UNKNOWN: _ClassVar[ApplicationStatusEnum]
     APPLICATION_STATUS_CREATED: _ClassVar[ApplicationStatusEnum]
     APPLICATION_STATUS_AUDITED: _ClassVar[ApplicationStatusEnum]
@@ -124,12 +124,12 @@ class ApplicationStatusEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     APPLICATION_STATUS_ONLINE: _ClassVar[ApplicationStatusEnum]
 
 class CipherTypeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     CIPHER_TYPE_UNKNOWN: _ClassVar[CipherTypeEnum]
     CIPHER_TYPE_AES_GCM_256: _ClassVar[CipherTypeEnum]
 
 class AuthenticateTypeEnum(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     AUTHENTICATE_TYPE_UNKNOWN: _ClassVar[AuthenticateTypeEnum]
     AUTHENTICATE_TYPE_CERT: _ClassVar[AuthenticateTypeEnum]
     AUTHENTICATE_TYPE_TOKEN: _ClassVar[AuthenticateTypeEnum]

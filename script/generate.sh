@@ -47,7 +47,7 @@ if [ -d "venv" ]; then
 fi
 
 # generate code
-if ! sh "${tool}" -t server -m common,llm,user,asset,identity,web3,config,session,rag -l "${language}"; then
+if ! sh "${tool}" -t server -m common,llm,user,asset,identity,web3,config,session,rag,interviewer -l "${language}"; then
   echo "Fail to compile proto file for interviewer!"
   exit 1
 fi

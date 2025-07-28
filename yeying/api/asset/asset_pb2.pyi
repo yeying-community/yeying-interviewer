@@ -3,12 +3,13 @@ from yeying.api.common import code_pb2 as _code_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Mapping, Optional as _Optional, Union as _Union
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
+from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class SearchAssetRequest(_message.Message):
-    __slots__ = ["header", "body"]
+    __slots__ = ("header", "body")
     HEADER_FIELD_NUMBER: _ClassVar[int]
     BODY_FIELD_NUMBER: _ClassVar[int]
     header: _message_pb2.MessageHeader
@@ -16,7 +17,7 @@ class SearchAssetRequest(_message.Message):
     def __init__(self, header: _Optional[_Union[_message_pb2.MessageHeader, _Mapping]] = ..., body: _Optional[_Union[SearchAssetRequestBody, _Mapping]] = ...) -> None: ...
 
 class SearchAssetRequestBody(_message.Message):
-    __slots__ = ["condition", "page"]
+    __slots__ = ("condition", "page")
     CONDITION_FIELD_NUMBER: _ClassVar[int]
     PAGE_FIELD_NUMBER: _ClassVar[int]
     condition: SearchAssetCondition
@@ -24,7 +25,7 @@ class SearchAssetRequestBody(_message.Message):
     def __init__(self, condition: _Optional[_Union[SearchAssetCondition, _Mapping]] = ..., page: _Optional[_Union[_message_pb2.RequestPage, _Mapping]] = ...) -> None: ...
 
 class SearchAssetCondition(_message.Message):
-    __slots__ = ["format", "hash", "namespaceId", "name"]
+    __slots__ = ("format", "hash", "namespaceId", "name")
     FORMAT_FIELD_NUMBER: _ClassVar[int]
     HASH_FIELD_NUMBER: _ClassVar[int]
     NAMESPACEID_FIELD_NUMBER: _ClassVar[int]
@@ -36,7 +37,7 @@ class SearchAssetCondition(_message.Message):
     def __init__(self, format: _Optional[_Union[_code_pb2.DigitalFormatEnum, str]] = ..., hash: _Optional[str] = ..., namespaceId: _Optional[str] = ..., name: _Optional[str] = ...) -> None: ...
 
 class SearchAssetResponse(_message.Message):
-    __slots__ = ["header", "body"]
+    __slots__ = ("header", "body")
     HEADER_FIELD_NUMBER: _ClassVar[int]
     BODY_FIELD_NUMBER: _ClassVar[int]
     header: _message_pb2.MessageHeader
@@ -44,7 +45,7 @@ class SearchAssetResponse(_message.Message):
     def __init__(self, header: _Optional[_Union[_message_pb2.MessageHeader, _Mapping]] = ..., body: _Optional[_Union[SearchAssetResponseBody, _Mapping]] = ...) -> None: ...
 
 class SearchAssetResponseBody(_message.Message):
-    __slots__ = ["status", "assets"]
+    __slots__ = ("status", "assets")
     STATUS_FIELD_NUMBER: _ClassVar[int]
     ASSETS_FIELD_NUMBER: _ClassVar[int]
     status: _message_pb2.ResponseStatus
@@ -52,7 +53,7 @@ class SearchAssetResponseBody(_message.Message):
     def __init__(self, status: _Optional[_Union[_message_pb2.ResponseStatus, _Mapping]] = ..., assets: _Optional[_Iterable[_Union[AssetMetadata, _Mapping]]] = ...) -> None: ...
 
 class SignAssetRequest(_message.Message):
-    __slots__ = ["header", "body"]
+    __slots__ = ("header", "body")
     HEADER_FIELD_NUMBER: _ClassVar[int]
     BODY_FIELD_NUMBER: _ClassVar[int]
     header: _message_pb2.MessageHeader
@@ -60,13 +61,13 @@ class SignAssetRequest(_message.Message):
     def __init__(self, header: _Optional[_Union[_message_pb2.MessageHeader, _Mapping]] = ..., body: _Optional[_Union[SignAssetRequestBody, _Mapping]] = ...) -> None: ...
 
 class SignAssetRequestBody(_message.Message):
-    __slots__ = ["asset"]
+    __slots__ = ("asset",)
     ASSET_FIELD_NUMBER: _ClassVar[int]
     asset: AssetMetadata
     def __init__(self, asset: _Optional[_Union[AssetMetadata, _Mapping]] = ...) -> None: ...
 
 class SignAssetResponse(_message.Message):
-    __slots__ = ["header", "body"]
+    __slots__ = ("header", "body")
     HEADER_FIELD_NUMBER: _ClassVar[int]
     BODY_FIELD_NUMBER: _ClassVar[int]
     header: _message_pb2.MessageHeader
@@ -74,7 +75,7 @@ class SignAssetResponse(_message.Message):
     def __init__(self, header: _Optional[_Union[_message_pb2.MessageHeader, _Mapping]] = ..., body: _Optional[_Union[SignAssetResponseBody, _Mapping]] = ...) -> None: ...
 
 class SignAssetResponseBody(_message.Message):
-    __slots__ = ["status", "asset"]
+    __slots__ = ("status", "asset")
     STATUS_FIELD_NUMBER: _ClassVar[int]
     ASSET_FIELD_NUMBER: _ClassVar[int]
     status: _message_pb2.ResponseStatus
@@ -82,7 +83,7 @@ class SignAssetResponseBody(_message.Message):
     def __init__(self, status: _Optional[_Union[_message_pb2.ResponseStatus, _Mapping]] = ..., asset: _Optional[_Union[AssetMetadata, _Mapping]] = ...) -> None: ...
 
 class UpdateAssetRequest(_message.Message):
-    __slots__ = ["header", "body"]
+    __slots__ = ("header", "body")
     HEADER_FIELD_NUMBER: _ClassVar[int]
     BODY_FIELD_NUMBER: _ClassVar[int]
     header: _message_pb2.MessageHeader
@@ -90,13 +91,13 @@ class UpdateAssetRequest(_message.Message):
     def __init__(self, header: _Optional[_Union[_message_pb2.MessageHeader, _Mapping]] = ..., body: _Optional[_Union[UpdateAssetRequestBody, _Mapping]] = ...) -> None: ...
 
 class UpdateAssetRequestBody(_message.Message):
-    __slots__ = ["asset"]
+    __slots__ = ("asset",)
     ASSET_FIELD_NUMBER: _ClassVar[int]
     asset: AssetMetadata
     def __init__(self, asset: _Optional[_Union[AssetMetadata, _Mapping]] = ...) -> None: ...
 
 class UpdateAssetResponse(_message.Message):
-    __slots__ = ["header", "body"]
+    __slots__ = ("header", "body")
     HEADER_FIELD_NUMBER: _ClassVar[int]
     BODY_FIELD_NUMBER: _ClassVar[int]
     header: _message_pb2.MessageHeader
@@ -104,7 +105,7 @@ class UpdateAssetResponse(_message.Message):
     def __init__(self, header: _Optional[_Union[_message_pb2.MessageHeader, _Mapping]] = ..., body: _Optional[_Union[UpdateAssetResponseBody, _Mapping]] = ...) -> None: ...
 
 class UpdateAssetResponseBody(_message.Message):
-    __slots__ = ["status", "asset"]
+    __slots__ = ("status", "asset")
     STATUS_FIELD_NUMBER: _ClassVar[int]
     ASSET_FIELD_NUMBER: _ClassVar[int]
     status: _message_pb2.ResponseStatus
@@ -112,7 +113,7 @@ class UpdateAssetResponseBody(_message.Message):
     def __init__(self, status: _Optional[_Union[_message_pb2.ResponseStatus, _Mapping]] = ..., asset: _Optional[_Union[AssetMetadata, _Mapping]] = ...) -> None: ...
 
 class AssetDetailRequest(_message.Message):
-    __slots__ = ["header", "body"]
+    __slots__ = ("header", "body")
     HEADER_FIELD_NUMBER: _ClassVar[int]
     BODY_FIELD_NUMBER: _ClassVar[int]
     header: _message_pb2.MessageHeader
@@ -120,7 +121,7 @@ class AssetDetailRequest(_message.Message):
     def __init__(self, header: _Optional[_Union[_message_pb2.MessageHeader, _Mapping]] = ..., body: _Optional[_Union[AssetDetailRequestBody, _Mapping]] = ...) -> None: ...
 
 class AssetDetailRequestBody(_message.Message):
-    __slots__ = ["hash", "namespaceId"]
+    __slots__ = ("hash", "namespaceId")
     HASH_FIELD_NUMBER: _ClassVar[int]
     NAMESPACEID_FIELD_NUMBER: _ClassVar[int]
     hash: str
@@ -128,7 +129,7 @@ class AssetDetailRequestBody(_message.Message):
     def __init__(self, hash: _Optional[str] = ..., namespaceId: _Optional[str] = ...) -> None: ...
 
 class AssetDetailResponse(_message.Message):
-    __slots__ = ["header", "body"]
+    __slots__ = ("header", "body")
     HEADER_FIELD_NUMBER: _ClassVar[int]
     BODY_FIELD_NUMBER: _ClassVar[int]
     header: _message_pb2.MessageHeader
@@ -136,7 +137,7 @@ class AssetDetailResponse(_message.Message):
     def __init__(self, header: _Optional[_Union[_message_pb2.MessageHeader, _Mapping]] = ..., body: _Optional[_Union[AssetDetailResponseBody, _Mapping]] = ...) -> None: ...
 
 class AssetDetailResponseBody(_message.Message):
-    __slots__ = ["status", "asset"]
+    __slots__ = ("status", "asset")
     STATUS_FIELD_NUMBER: _ClassVar[int]
     ASSET_FIELD_NUMBER: _ClassVar[int]
     status: _message_pb2.ResponseStatus
@@ -144,7 +145,7 @@ class AssetDetailResponseBody(_message.Message):
     def __init__(self, status: _Optional[_Union[_message_pb2.ResponseStatus, _Mapping]] = ..., asset: _Optional[_Union[AssetMetadata, _Mapping]] = ...) -> None: ...
 
 class DeleteAssetRequest(_message.Message):
-    __slots__ = ["header", "body"]
+    __slots__ = ("header", "body")
     HEADER_FIELD_NUMBER: _ClassVar[int]
     BODY_FIELD_NUMBER: _ClassVar[int]
     header: _message_pb2.MessageHeader
@@ -152,7 +153,7 @@ class DeleteAssetRequest(_message.Message):
     def __init__(self, header: _Optional[_Union[_message_pb2.MessageHeader, _Mapping]] = ..., body: _Optional[_Union[DeleteAssetRequestBody, _Mapping]] = ...) -> None: ...
 
 class DeleteAssetRequestBody(_message.Message):
-    __slots__ = ["hash", "namespaceId"]
+    __slots__ = ("hash", "namespaceId")
     HASH_FIELD_NUMBER: _ClassVar[int]
     NAMESPACEID_FIELD_NUMBER: _ClassVar[int]
     hash: str
@@ -160,7 +161,7 @@ class DeleteAssetRequestBody(_message.Message):
     def __init__(self, hash: _Optional[str] = ..., namespaceId: _Optional[str] = ...) -> None: ...
 
 class DeleteAssetResponse(_message.Message):
-    __slots__ = ["header", "body"]
+    __slots__ = ("header", "body")
     HEADER_FIELD_NUMBER: _ClassVar[int]
     BODY_FIELD_NUMBER: _ClassVar[int]
     header: _message_pb2.MessageHeader
@@ -168,13 +169,13 @@ class DeleteAssetResponse(_message.Message):
     def __init__(self, header: _Optional[_Union[_message_pb2.MessageHeader, _Mapping]] = ..., body: _Optional[_Union[DeleteAssetResponseBody, _Mapping]] = ...) -> None: ...
 
 class DeleteAssetResponseBody(_message.Message):
-    __slots__ = ["status"]
+    __slots__ = ("status",)
     STATUS_FIELD_NUMBER: _ClassVar[int]
     status: _message_pb2.ResponseStatus
     def __init__(self, status: _Optional[_Union[_message_pb2.ResponseStatus, _Mapping]] = ...) -> None: ...
 
 class AssetMetadata(_message.Message):
-    __slots__ = ["namespaceId", "owner", "parentHash", "hash", "version", "name", "chunks", "description", "format", "size", "createdAt", "updatedAt", "chunkCount", "chunkSize", "isEncrypted", "signature"]
+    __slots__ = ("namespaceId", "owner", "parentHash", "hash", "version", "name", "chunks", "description", "format", "size", "createdAt", "updatedAt", "chunkCount", "chunkSize", "isEncrypted", "signature")
     NAMESPACEID_FIELD_NUMBER: _ClassVar[int]
     OWNER_FIELD_NUMBER: _ClassVar[int]
     PARENTHASH_FIELD_NUMBER: _ClassVar[int]
