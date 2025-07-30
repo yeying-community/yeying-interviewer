@@ -11,13 +11,14 @@ import yeying.api.interviewer.room_pb2 as room_pb2
 import yeying.api.common.message_pb2 as message_pb2
 from interviewer.application.server.room import RoomService
 from interviewer.domain.model.room import Room
+from interviewer.domain.mapper.entities import InterviewRoomDO
 from interviewer.infrastructure.db.instance import Instance
 from interviewer.tool.date import getCurrentUtcString
 from tests.yeying.common.test_config import setup_test_database, setup_test_logging
 
 
 class RoomServiceTestCase(unittest.TestCase):
-    instance = Instance(setup_test_database())
+    instance = Instance(setup_test_database([InterviewRoomDO]))
 
     @classmethod
     def setUpClass(cls):
@@ -87,11 +88,7 @@ class RoomServiceTestCase(unittest.TestCase):
         room_service = RoomService(db_instance=self.instance)
         room_service.deleteRoom(did=did, room_id=room_id)  # 清理
 
-        header = message_pb2.MessageHeader(
-            requestId=str(uuid.uuid4()),
-            timestamp=str(int(datetime.now().timestamp())),
-            version="1.0"
-        )
+        header = message_pb2.MessageHeader()
 
         # 测试创建
         room_metadata = room_pb2.RoomMetadata(
@@ -188,7 +185,10 @@ class RoomServiceTestCase(unittest.TestCase):
                 roomId="",  # 空ID
                 did="",
                 roomName="",
-                resumeId=""
+                resumeId="",
+                contextId="",  # 必需参数
+                experienceId="",  # 必需参数
+                knowledgeId=""  # 必需参数
             )
             invalid_room.validate()
 
