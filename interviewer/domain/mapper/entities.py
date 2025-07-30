@@ -1,6 +1,4 @@
-from peewee import CharField, Database, Proxy, Model, TextField, BooleanField, BigIntegerField, DateTimeField, \
-    ForeignKeyField, IntegerField
-from datetime import datetime
+from peewee import CharField, Database, Proxy, Model, TextField, IntegerField
 
 database_proxy: Database = Proxy()
 
@@ -46,114 +44,127 @@ class ResumeDO(DbModel):
     """简历表"""
 
     class Meta:
-        table_name = 'Resume'
+        table_name = 'resumes'
 
-    resume_id = CharField(primary_key=True, max_length=36)  # UUID
+    resumeId = CharField(primary_key=True, max_length=36, column_name="resume_id")  # UUID
     did = CharField(null=False, max_length=255)  # 用户DID
-    resume_name = CharField(null=False, max_length=100)  # 简历名称
-    version = CharField(null=True, max_length=32, default='v1.0')  # 版本号
-    file_url = CharField(null=False, max_length=500)  # 文件URL
-    prompt_type = CharField(null=True, max_length=64)  # prompt类型
-    created_at = DateTimeField(default=datetime.now)  # 创建时间
-    updated_at = DateTimeField(default=datetime.now)  # 更新时间
+    resumeName = CharField(null=False, max_length=100, column_name="resume_name")  # 简历名称
+    version = CharField(null=False, max_length=32, default='v1.0')  # 版本号
+    fileUrl = CharField(null=True, max_length=500, column_name="file_url")  # 文件URL
+    promptType = CharField(null=True, max_length=64, column_name="prompt_type")  # prompt类型
+
+    createdAt = CharField(null=False, column_name="created_at", max_length=64)  # 创建时间
+    updatedAt = CharField(null=False, column_name="updated_at", max_length=64)  # 更新时间
+    signature = CharField(null=False, max_length=192)
 
 
 class JobInfoDO(DbModel):
     """职位信息表"""
 
     class Meta:
-        table_name = 'JobInfo'
+        table_name = 'job_infos'
 
-    job_info_id = CharField(primary_key=True, max_length=36)  # UUID
+    jobInfoId = CharField(primary_key=True, max_length=36, column_name="job_info_id")  # UUID
     company = CharField(null=False, max_length=255)  # 公司名称
-    job_title = CharField(null=False, max_length=255)  # 职位名称
-    job_description = TextField(null=True)  # 职位描述
-    created_at = DateTimeField(default=datetime.now)  # 创建时间
-    updated_at = DateTimeField(default=datetime.now)  # 更新时间
+    jobTitle = CharField(null=False, max_length=255, column_name="job_title")  # 职位名称
+    jobDescription = TextField(null=True, column_name="job_description")  # 职位描述
+
+    createdAt = CharField(null=False, column_name="created_at", max_length=64)  # 创建时间
+    updatedAt = CharField(null=False, column_name="updated_at", max_length=64)  # 更新时间
+    signature = CharField(null=False, max_length=192)
 
 
 class InterviewRoomDO(DbModel):
     """面试间表"""
 
     class Meta:
-        table_name = 'InterviewRoom'
+        table_name = 'interview_rooms'
 
-    room_id = CharField(primary_key=True, max_length=36)  # UUID
+    roomId = CharField(primary_key=True, max_length=36, column_name="room_id")  # UUID
     did = CharField(null=False, max_length=255)  # 用户DID
-    room_name = CharField(null=False, max_length=100)  # 面试间名称
+    roomName = CharField(null=False, max_length=100, column_name="room_name")  # 面试间名称
 
     # 三个知识库ID
-    context_id = CharField(null=True, max_length=36)  # 上下文知识库ID
-    experience_id = CharField(null=True, max_length=36)  # 用户知识库ID
-    knowledge_id = CharField(null=True, max_length=36)  # 应用知识库ID
-
-    created_at = DateTimeField(default=datetime.now)  # 创建时间
-    updated_at = DateTimeField(default=datetime.now)  # 更新时间
+    contextId = CharField(null=False, max_length=36, column_name="context_id")  # 上下文知识库ID
+    experienceId = CharField(null=False, max_length=36, column_name="experience_id")  # 用户知识库ID
+    knowledgeId = CharField(null=False, max_length=36, column_name="knowledge_id")  # 应用知识库ID
 
     # 外键关系
-    resume = ForeignKeyField(ResumeDO, field=ResumeDO.resume_id, null=False, backref='interview_rooms')
-    job_info = ForeignKeyField(JobInfoDO, field=JobInfoDO.job_info_id, null=True, backref='interview_rooms')
+    resumeId = CharField(null=False, max_length=36, column_name="resume_id")  # 简历ID
+    jobInfoId = CharField(null=True, max_length=36, column_name="job_info_id")  # 职位信息ID
+
+    createdAt = CharField(null=False, column_name="created_at", max_length=64)  # 创建时间
+    updatedAt = CharField(null=False, column_name="updated_at", max_length=64)  # 更新时间
+    signature = CharField(null=False, max_length=192)
 
 
 class InterviewSessionDO(DbModel):
     """面试会话表"""
 
     class Meta:
-        table_name = 'InterviewSession'
+        table_name = 'interview_sessions'
 
-    session_id = CharField(primary_key=True, max_length=36)  # UUID
-    session_name = CharField(null=False, max_length=100)  # 会话名称
-    created_at = DateTimeField(default=datetime.now)  # 创建时间
-    updated_at = DateTimeField(default=datetime.now)  # 更新时间
+    sessionId = CharField(primary_key=True, max_length=36, column_name="session_id")  # UUID
+    sessionName = CharField(null=False, max_length=100, column_name="session_name")  # 会话名称
 
     # 外键关系
-    room = ForeignKeyField(InterviewRoomDO, field=InterviewRoomDO.room_id, null=False, backref='sessions')
+    roomId = CharField(null=False, max_length=36, column_name="room_id")  # 面试间ID
+
+    createdAt = CharField(null=False, column_name="created_at", max_length=64)  # 创建时间
+    updatedAt = CharField(null=False, column_name="updated_at", max_length=64)  # 更新时间
+    signature = CharField(null=False, max_length=192)
 
 
 class InterviewSessionRoundDO(DbModel):
     """面试会话轮次表"""
 
     class Meta:
-        table_name = 'InterviewSessionRound'
+        table_name = 'interview_session_rounds'
 
-    round_id = CharField(primary_key=True, max_length=36)  # UUID
+    roundId = CharField(primary_key=True, max_length=36, column_name="round_id")  # UUID
     round = IntegerField(null=False)  # 轮次编号
-    qa_json_url = CharField(null=True, max_length=255)  # 问答JSON URL
-    created_at = DateTimeField(default=datetime.now)  # 创建时间
-    updated_at = DateTimeField(default=datetime.now)  # 更新时间
+    qaJsonUrl = CharField(null=True, max_length=255, column_name="qa_json_url")  # 问答JSON URL
 
     # 外键关系
-    session = ForeignKeyField(InterviewSessionDO, field=InterviewSessionDO.session_id, null=False, backref='rounds')
+    sessionId = CharField(null=False, max_length=36, column_name="session_id")  # 会话ID
+
+    createdAt = CharField(null=False, column_name="created_at", max_length=64)  # 创建时间
+    updatedAt = CharField(null=False, column_name="updated_at", max_length=64)  # 更新时间
+    signature = CharField(null=False, max_length=192)
 
 
 class InterviewReportDO(DbModel):
     """面试报告表"""
 
     class Meta:
-        table_name = 'InterviewReport'
+        table_name = 'interview_reports'
 
-    report_id = CharField(primary_key=True, max_length=36)  # UUID
-    report_name = CharField(null=False, max_length=100)  # 报告名称
-    report_json_url = CharField(null=True, max_length=255)  # 报告JSON URL
+    reportId = CharField(primary_key=True, max_length=36, column_name="report_id")  # UUID
+    reportName = CharField(null=False, max_length=100, column_name="report_name")  # 报告名称
+    reportJsonUrl = CharField(null=True, max_length=255, column_name="report_json_url")  # 报告JSON URL
     summary = TextField(null=True)  # 面试总结
-    created_at = DateTimeField(default=datetime.now)  # 创建时间
-    updated_at = DateTimeField(default=datetime.now)  # 更新时间
 
     # 外键关系
-    session_round = ForeignKeyField(InterviewSessionRoundDO, field=InterviewSessionRoundDO.round_id, null=False, backref='reports')
+    roundId = CharField(null=False, max_length=36, column_name="round_id")  # 轮次ID
+
+    createdAt = CharField(null=False, column_name="created_at", max_length=64)  # 创建时间
+    updatedAt = CharField(null=False, column_name="updated_at", max_length=64)  # 更新时间
+    signature = CharField(null=False, max_length=192)
 
 
 class TaskDO(DbModel):
     """任务表"""
 
     class Meta:
-        table_name = 'Task'
+        table_name = 'tasks'
 
-    task_id = CharField(primary_key=True, max_length=36)  # UUID
-    task_type = CharField(null=True, max_length=64)  # 任务类型
-    related_id = CharField(null=True, max_length=36)  # 关联ID
+    taskId = CharField(primary_key=True, max_length=36, column_name="task_id")  # UUID
+    taskType = CharField(null=True, max_length=64, column_name="task_type")  # 任务类型
+    relatedId = CharField(null=True, max_length=36, column_name="related_id")  # 关联ID
     status = CharField(null=False, max_length=20, default='pending')  # 任务状态
-    result_url = CharField(null=True, max_length=255)  # 结果URL
+    resultUrl = CharField(null=True, max_length=255, column_name="result_url")  # 结果URL
     log = TextField(null=True)  # 日志
-    created_at = DateTimeField(default=datetime.now)  # 创建时间
-    updated_at = DateTimeField(default=datetime.now)  # 更新时间
+
+    createdAt = CharField(null=False, column_name="created_at", max_length=64)  # 创建时间
+    updatedAt = CharField(null=False, column_name="updated_at", max_length=64)  # 更新时间
+    signature = CharField(null=False, max_length=192)
