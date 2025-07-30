@@ -4,8 +4,6 @@ from contextlib import contextmanager
 from peewee import SqliteDatabase, PostgresqlDatabase, MySQLDatabase, OperationalError
 from playhouse.migrate import SqliteMigrator, PostgresqlMigrator, MySQLMigrator, migrate, SchemaMigrator
 from pydantic import BaseModel
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 
 from interviewer.domain.mapper.entities import database_proxy, SchemaMigration, DbModel
 from interviewer.tool.file import ensure_parent_dirs_exist
@@ -92,44 +90,13 @@ def ensure_migrated(config: DatabaseConfig, tables: list[DbModel]):
 
 
 class Instance(object):
-    """Connect to postgresql database and execute crud command,
-    reference: https://docs.sqlalchemy.org/en/14/orm/examples.html
-    """
+    """Database instance wrapper for Peewee ORM"""
 
     def __init__(self, conf=None):
-        address = 'postgresql://{}:{}@{}:{}/{}'.format(conf.user, conf.password, conf.host, conf.port, conf.name)
-        self.engine = create_engine(address)
-        Session = sessionmaker(bind=self.engine)
-        self.session = Session()
-        logging.info('Success to connect to interviewer database={}:{}!'.format(conf.host, conf.port))
-
-    @contextmanager
-    def session_scope(self):
-        """Provide a transactional scope around a series of operations."""
-        session = sessionmaker(bind=self.engine)()
-        try:
-            yield session
-            session.commit()
-        except Exception as e:
-            logging.error(f'Fail to yield session to interviewer database, error=${str(e)}!', exc_info=True)
-            session.rollback()
-            raise e
-        finally:
-            session.close()
-
-    def get_session(self):
-        return self.session
-
-    def insert(self, records):
-        with self.session_scope() as session:
-            if not isinstance(records, list):
-                session.add(records)
-                return
-
-            for record in records:
-                session.add(record)
-
-    def close(self):
-        if self.session is None:
-            return
-        self.session.close()
+        if conf is not None:
+            # 生产环境：使用配置创建数据库连接
+            create_database(conf)
+        # 暴露 Peewee 的 database_proxy 作为 database 属性
+        self.database = database_proxy
+        if conf is not None:
+            logging.info(f'Success to connect to database: {conf.type}://{conf.host}:{conf.port}/{conf.name}')
