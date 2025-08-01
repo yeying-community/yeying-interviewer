@@ -30,7 +30,7 @@ class RoomServiceTestCase(unittest.TestCase):
         did = "did:example:user1"
         room_id = str(uuid.uuid4())
 
-        room_service = RoomService(db_instance=self.instance)
+        room_service = RoomService(authenticate=None, db_instance=self.instance)
         room_service.deleteRoom(did=did, room_id=room_id)  # 清理
 
         # 创建房间
@@ -85,7 +85,7 @@ class RoomServiceTestCase(unittest.TestCase):
         did = "did:example:grpc-test"
         room_id = str(uuid.uuid4())
 
-        room_service = RoomService(db_instance=self.instance)
+        room_service = RoomService(authenticate=None, db_instance=self.instance)
         room_service.deleteRoom(did=did, room_id=room_id)  # 清理
 
         header = message_pb2.MessageHeader()
@@ -201,7 +201,7 @@ class RoomServiceTestCase(unittest.TestCase):
         did = "did:example:error-test"
         room_id = str(uuid.uuid4())
 
-        room_service = RoomService(db_instance=self.instance)
+        room_service = RoomService(authenticate=None, db_instance=self.instance)
 
         # 测试获取不存在的房间
         non_existent = room_service.getRoom(did=did, room_id=room_id)

@@ -25,7 +25,8 @@ logger = logging.getLogger(__name__)
 class RoomService:
     """面试间服务"""
 
-    def __init__(self, db_instance: Instance):
+    def __init__(self, authenticate, db_instance: Instance):
+        self.authenticate = authenticate
         self.repository = RoomRepository(db_instance)
 
     # ========== gRPC接口实现 ==========
